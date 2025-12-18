@@ -1,3 +1,5 @@
+import { currentUser } from './auth.js';
+
 const form = document.getElementById("form");
 const nameEl = document.getElementById("name");
 const textEl = document.getElementById("text");
@@ -29,8 +31,10 @@ function showStatus(message, type = "loading") {
 // SEND (POST)
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const name = nameEl.value.trim();
   const text = textEl.value.trim();
+
+  // Use authenticated user's name
+  const name = currentUser?.displayName || "Anonymous";
 
   showStatus("Sending message...", "loading");
 

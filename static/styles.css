@@ -294,4 +294,152 @@ button.secondary:hover {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .auth-card {
+    padding: 32px 24px;
+  }
+
+  .auth-title {
+    font-size: 32px;
+  }
+
+  .user-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* Authentication Styles */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 8px 32px var(--shadow);
+  border: 1px solid var(--border);
+  text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+.auth-logo {
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, #5E5CE6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.google-signin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.google-signin-btn:hover {
+  background: var(--background);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.auth-hint {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* User Header */
+.user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.user-info-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-email {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.signout-btn {
+  padding: 10px 20px;
+  font-size: 15px;
+  background: rgba(120, 120, 128, 0.16);
+  color: var(--text-primary);
+}
+
+.signout-btn:hover {
+  background: rgba(120, 120, 128, 0.24);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

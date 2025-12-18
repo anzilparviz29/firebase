@@ -1,4 +1,17 @@
+# Python
 venv/
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Environment & Secrets
 .env
 serviceAccountKey.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
