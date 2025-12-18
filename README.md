@@ -1,71 +1,75 @@
-) Firebase Setup (Service Account JSON for Flask)
-Download service account key
+# Firebase + Flask Firestore Demo
 
-Firebase Console → Project settings → Service accounts →
-✅ Generate new private key → download JSON
+Workshop project to **push data to Firestore** and **retrieve it in the UI** using **Flask (Python)** + a simple frontend (`templates/` + `static/`).
 
-Place it in the repo root
+---
 
-Rename it (recommended):
+## ✅ Firebase Setup (Service Account JSON for Flask)
 
-serviceAccountKey.json
+### 1) Download service account key
+Firebase Console → **Project settings** → **Service accounts** →  
+✅ **Generate new private key** → download JSON
 
+### 2) Place it in the repo root
+- Rename it (recommended): `serviceAccountKey.json`
+- Put it in the **same folder as `app.py`**
 
-Put it in the same folder as app.py.
-
-2) Create .env (repo root)
-
+```txt
+./serviceAccountKey.json
+✅ Create .env (repo root)
 Create a file named .env in the repo root:
 
+env
+Copy code
 FIREBASE_SERVICE_ACCOUNT=serviceAccountKey.json
-
-
 ⚠️ Never commit .env or serviceAccountKey.json.
 
-3) Python Setup (Virtual Environment)
-Create venv (choose one)
-
+✅ Python Setup (Virtual Environment)
+1) Create venv (choose one)
 Option A (recommended):
 
+bash
+Copy code
 python -m venv .venv
-
-
 Option B (if you already use venv/):
 
+bash
+Copy code
 python -m venv venv
-
-Activate venv
-
+2) Activate venv
 macOS / Linux
 
+bash
+Copy code
 source .venv/bin/activate
-
-
 Windows (PowerShell)
 
+powershell
+Copy code
 .venv\Scripts\Activate.ps1
-
-
 Windows (CMD)
 
+bat
+Copy code
 .venv\Scripts\activate
-
-Install Python requirements
+3) Install Python requirements
+bash
+Copy code
 pip install -r requirements.txt
-
-4) Frontend Setup (npm)
-
+✅ Frontend Setup (npm)
 From the repo root:
 
+bash
+Copy code
 npm install
 npm install firebase
-
-5) Add Firebase Web App Config (Frontend)
+✅ Firebase Web App Config (Frontend)
 Create static/firebaseConfig.js
-
 Firebase Console → Project settings → Your apps → Web app → config snippet
 Copy values and paste here:
 
+js
+Copy code
 // static/firebaseConfig.js
 export const firebaseConfig = {
   apiKey: "PASTE",
@@ -75,18 +79,15 @@ export const firebaseConfig = {
   messagingSenderId: "PASTE",
   appId: "PASTE",
 };
+✅ Client config is safe to expose.
+⚠️ serviceAccountKey.json is server secret (keep private).
 
-
-This is client config (safe to be in frontend).
-The serviceAccountKey.json is the secret (server only).
-
-6) Run the App
-
+▶️ Run the App
 Start Flask (from repo root):
 
+bash
+Copy code
 python app.py
-
-
-Open:
+Open in browser:
 
 http://localhost:5000
