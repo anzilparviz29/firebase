@@ -1,27 +1,39 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flask → Firestore</title>
-    <style>
-      body { font-family: system-ui, Arial; max-width: 720px; margin: 40px auto; padding: 0 16px; }
-      form { display: flex; gap: 10px; flex-wrap: wrap; }
-      input, button { padding: 10px; font-size: 14px; }
-      #status { margin-top: 10px; color: #444; }
-    </style>
+    <title>Firestore Messages</title>
+    <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
-    <h1>Push data to Firestore (via Flask) ✅</h1>
-    <p>Super simple: browser sends JSON → Flask writes to Firestore.</p>
+    <div class="container">
+      <h1>Firestore Messages</h1>
+      <p class="subtitle">Real-time messaging powered by Flask and Firestore</p>
 
-    <form id="form">
-      <input id="name" placeholder="name" required maxlength="40" />
-      <input id="text" placeholder="message" required maxlength="280" style="flex:1; min-width:220px;" />
-      <button type="submit">Send</button>
-    </form>
+      <div class="card">
+        <h2>Send Message</h2>
+        <form id="form">
+          <div class="input-group">
+            <input id="name" placeholder="Your name" required maxlength="40" />
+            <input id="text" placeholder="Type your message..." required maxlength="280" />
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+        <div id="status"></div>
+      </div>
 
-    <div id="status"></div>
+      <div class="card">
+        <div class="retrieve-header">
+          <h2>Messages</h2>
+          <div class="retrieve-actions">
+            <button id="btnRetrieve" class="secondary" type="button">Refresh</button>
+            <span class="muted">Latest 50</span>
+          </div>
+        </div>
+        <ul id="list"></ul>
+      </div>
+    </div>
 
     <script src="/static/app.js"></script>
   </body>

@@ -8,9 +8,24 @@ db = get_db()
 
 COLL = "messages"
 
+def serialize_doc(doc):
+    data = doc.to_dict() or {}
+    created = data.get("createdAt")
+
+    # Firestore timestamp becomes a Python datetime (when available)
+    if created is not None and hasattr(created, "isoformat"):
+        data["createdAt"] = created.isoformat()
+    else:
+        data["createdAt"] = None
+
+    data["id"] = doc.id
+    return data
+
+
 @app.get("/")
 def home():
     return render_template("index.html")
+
 
 @app.post("/api/messages")
 def create_message():
@@ -33,6 +48,20 @@ def create_message():
     })
 
     return jsonify({"ok": True, "id": doc_ref.id})
+
+
+# ✅ NEW: Retrieve messages
+@app.get("/api/messages")
+def list_messages():
+    docs = (
+        db.collection(COLL)
+        .order_by("createdAt", direction="DESCENDING")
+        .limit(50)
+        .stream()
+    )
+    items = [serialize_doc(d) for d in docs]
+    return jsonify(items)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
