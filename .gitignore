@@ -5,7 +5,7 @@ __pycache__/
 *$py.class
 
 # Environment & Secrets
-.env
+
 serviceAccountKey.json
 
 # IDE
